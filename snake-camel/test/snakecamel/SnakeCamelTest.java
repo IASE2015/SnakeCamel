@@ -21,8 +21,13 @@ public class SnakeCamelTest {
 		assertThat(actual,is(expected));
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void Exception(){
+	public void ExceptionInSnake(){
 		String test = "aiueo";
 		SnakeCamelUtil.snakeToCamelcase(test);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void ExceptionInCamel(){
+		String test = "bookforest";
+		SnakeCamelUtil.camelToSnakecase(test);
 	}
 }
