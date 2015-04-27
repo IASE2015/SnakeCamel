@@ -3,6 +3,7 @@ package snakecamel;
 public class SnakeCamelUtil {
 
 	public static String snakeToCamelcase(String snake_case) {
+		if(!snake_case.contains("_")) throw new IllegalArgumentException("Type snake_case String");
 		String[] words = snake_case.split("_");
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < words.length - 1; i++) {
@@ -14,16 +15,19 @@ public class SnakeCamelUtil {
 	public static String camelToSnakecase(String camelcase) {
 		StringBuilder sb = new StringBuilder();
 		int j = 0;
+		int k = 0;
 		for (int i = 0; i < camelcase.length(); i++) {
 			char c = camelcase.charAt(i);
 			if (Character.isUpperCase(c)) {
 				sb.append(camelcase.substring(j, i));
+				k++;
 				if (sb.length() > 0) {
 					sb.append("_");
 				}
 				sb.append(Character.toLowerCase(c));
 				j = i;
 			}
+			if(k<2) throw new IllegalArgumentException("Type camelcase String");
 		}
 		sb.append(camelcase.substring(j));
 		return new String(sb);
