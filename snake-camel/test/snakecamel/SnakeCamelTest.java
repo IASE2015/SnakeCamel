@@ -11,7 +11,7 @@ public class SnakeCamelTest {
 	public void snakeToCamel() {
 		//fail("Not yet implemented");
 		String expected = "NewYork";
-		String actual = SnakeCamelUtil.snakeToCamelcase("new_yoke");
+		String actual = SnakeCamelUtil.snakeToCamelcase("new_york");
 		assertThat(actual,is(expected));
 	}
 	@Test
