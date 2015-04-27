@@ -6,9 +6,9 @@ public class SnakeCamelUtil {
 		if(!snake_case.contains("_")) throw new IllegalArgumentException("Type snake_case String");
 		String[] words = snake_case.split("_");
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < words.length - 1; i++) {
-			sb.append(capitalize(words[i]));
-		}
+			for (int i = 0; i <= words.length - 1; i++) {
+				sb.append(capitalize(words[i]));
+			}
 		return new String(sb);
 	}
 	 
