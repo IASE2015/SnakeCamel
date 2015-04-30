@@ -16,20 +16,20 @@ public class SnakeCamelUtil {
 		StringBuilder sb = new StringBuilder();
 		int j = 0;
 		int k = 0;
-		for (int i = 0; i < camelcase.length(); i++) {
+		for (int i = 1;i< camelcase.length() ; i++) {
 			char c = camelcase.charAt(i);
 			if (Character.isUpperCase(c)) {
-				sb.append(camelcase.substring(j, i));
+				sb.append(uncapitalize(camelcase.substring(j,i)));
 				k++;
-				if (sb.length() > 0) {
+				if (sb.length() > 1) {
 					sb.append("_");
 				}
 				sb.append(Character.toLowerCase(c));
-				j = i;
+				j = i+1;
 			}
-			if(k<2) throw new IllegalArgumentException("Type camelcase String");
+			//if(k<1) throw new IllegalArgumentException("Type CamelCase String");
 		}
-		sb.append(camelcase.substring(j));
+		sb.append(uncapitalize(camelcase.substring(j)));
 		return new String(sb);
 	}
 	
