@@ -27,8 +27,8 @@ public class SnakeCamelUtil {
 				sb.append(Character.toLowerCase(c));
 				j = i+1;
 			}
-			//if(k<1) throw new IllegalArgumentException("Type CamelCase String");
 		}
+		if(k<1) throw new IllegalArgumentException("Type CamelCase String");
 		sb.append(uncapitalize(camelcase.substring(j)));
 		return new String(sb);
 	}
