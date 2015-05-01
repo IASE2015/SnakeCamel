@@ -3,18 +3,14 @@ package snakecamel;
 public class SnakeCamelUtil {
 
 	public static String snakeToCamelcase(String snake_case) {
-		if(!snake_case.contains("_")) throw new IllegalArgumentException("Type snake_case String");
+		//if(!snake_case.contains("_")) throw new IllegalArgumentException("Type snake_case String");
 		String[] words = snake_case.split("_");
-		for(int i=0;i<words[i].length();i++)System.out.println(words[i]);
+		//for(int i=0;i<words.length;i++)System.out.println(words[i]);
 		StringBuilder sb = new StringBuilder();
-			for (int i = 0; i <= words.length - 1; i++) {
-				if(words[i].length()==0){
-					while(words[i].contains(" ")){
-						words[i]=words[i+1];
-					}
-					break;
-				}
-				sb.append(capitalize(words[i]));
+			for (int i = 0; i < words.length; i++) {
+				while(words[i].length()==0)
+					if(words[i].length()==0) i++;
+				 sb.append(capitalize(words[i]));
 			}
 		return new String(sb);
 	}
@@ -31,17 +27,16 @@ public class SnakeCamelUtil {
 				if (sb.length() > 0) {
 					sb.append("_");
 				}
-				sb.append(Character.toLowerCase(c));
-				j = i;
+				sb.append(uncapitalize(String.valueOf(c)));
+				j = i+1;
 			}
-			if(k<1) throw new IllegalArgumentException("Type camelcase String");
 		}
+		if(k==0) throw new IllegalArgumentException("Type camelcase String");
 		sb.append(camelcase.substring(j));
 		return new String(sb);
 	}
 	
 	static String capitalize(String s) {
-		int i=1;
 		char first=s.charAt(0);
 		char upperFirst = Character.toUpperCase(first);
 		String rest = s.substring(1);
